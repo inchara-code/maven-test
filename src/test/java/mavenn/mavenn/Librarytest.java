@@ -64,11 +64,12 @@ public class Librarytest {
     }
 
     @Test
-    void testIntentionalFailure() {
+    void testIssuedAndReturnedSuccess() {
         library.addBook("B004", "Java Programming");
-        Library.Book foundBook = library.searchBook("B004");
+        library.issueBook("B004");
+        assertTrue(library.searchBook("B004").isIssued());
 
-        // Expecting wrong title so this 1 test fails while the other 4 pass
-        assertEquals("Python Programming", foundBook.getTitle());
+        library.returnBook("B004");
+        assertFalse(library.searchBook("B004").isIssued());
     }
 }
