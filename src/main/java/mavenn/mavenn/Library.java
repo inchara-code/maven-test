@@ -66,4 +66,11 @@ public class Library {
         book.setIssued(false);
         return true;
     }
+
+    public static void main(String[] args) {
+        Library lib = new Library();
+        lib.addBook("B001", "Clean Code");
+        System.out.println("Library Management System running...");
+        System.out.println("Found book: " + lib.searchBook("B001").getTitle());
+    }
 }
